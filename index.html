@@ -6,61 +6,79 @@
     <title>فروع Oval Foods</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #fff;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .logo img {
-            width: 200px;
-            height: auto;
-        }
-        h1 {
-            text-align: center;
-            color: #28a745;
-            margin-bottom: 30px;
-        }
-        .branch {
-            background-color: #fff;
-            border: 2px solid #28a745;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .branch-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px;
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-        .branch-header img {
-            width: 30px;
-            height: 30px;
-        }
-        .branch-header:hover {
-            background-color: #218838;
-        }
-        .branch-content {
-            display: none;
-            padding: 15px;
-            background-color: #ffecd1;
-            color: #333;
-            line-height: 1.8;
-        }
-    </style>
+   <style>
+    body {
+        font-family: 'Cairo', sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .logo img {
+        width: 220px;
+        height: auto;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2e7d32;
+        margin-bottom: 35px;
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+
+    .branch {
+        background-color: #ffffff;
+        border: 1px solid #d0e4d7;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s;
+    }
+
+    .branch:hover {
+        transform: translateY(-3px);
+    }
+
+    .branch-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+        font-size: 19px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+    .branch-header img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .branch-header:hover {
+        background-color: #388e3c;
+    }
+
+    .branch-content {
+        display: none;
+        padding: 15px 20px;
+        background-color: #f9fafb;
+        color: #444;
+        line-height: 1.9;
+        font-size: 16px;
+    }
+</style>
+
 </head>
 <body>
 
@@ -68,7 +86,9 @@
     <img src="image/Screenshot 2025-07-03 192620.png" alt="Oval Foods Logo">
 </div>
 
-<h1>فروع Oval Foods</h1>
+<h1 style="text-align: center; color: #28a745; margin-bottom: 30px;">
+    جميع الفروع التي نورد إليها من Oval Foods
+</h1>
 
 <!-- مجموعة سبينس -->
 <div class="branch">
@@ -211,31 +231,38 @@
     <div class="branch-content">الدقهلية</div>
 </div>
 
+<!-- رابط أيقونات Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<footer style="background-color:#28a745; color:white; padding:20px; margin-top:30px; text-align:center; border-radius: 8px;">
-    <h3>تواصل معنا</h3>
+<footer style="background-color: #28a745; color: white; padding: 30px 20px; margin-top: 30px; text-align: center; border-radius: 12px; font-family: 'Cairo', sans-serif;">
     
-    <p>📍 العنوان: 6 أكتوبر   - الحي الثالث - شارع اربعين - عمارة 1616 - شقة 3</p>
-    
-    <p>📞 الخط الساخن: 01033362323 - 01050888270</p>
-    
-    <p>✉️ البريد الإلكتروني: <a href="mailto:ovalco2@gmail.com" style="color: white; text-decoration: underline;">ovalco2@gmail.com</a></p>
-    
-    <p style="font-size: 26px;">
-        <a href="https://www.facebook.com/ovalfoods" target="_blank" style="color:white; margin: 0 10px;">
+    <h2 style="margin-bottom: 20px;">تواصل معنا</h2>
+
+    <div style="font-size: 18px; margin-bottom: 15px;">
+        <p><i class="fas fa-map-marker-alt" style="margin-left: 8px;"></i> 6 أكتوبر - الحي الثالث - شارع أربعين - عمارة 1616 - شقة 3</p>
+        <p><i class="fas fa-phone-alt" style="margin-left: 8px;"></i> الخط الساخن: 01033362323 - 01050888270</p>
+        <p><i class="fas fa-envelope" style="margin-left: 8px;"></i> البريد الإلكتروني: 
+            <a href="mailto:ovalco2@gmail.com" style="color: #fff; text-decoration: underline;">ovalco2@gmail.com</a>
+        </p>
+    </div>
+
+    <div style="font-size: 28px;">
+        <a href="https://www.facebook.com/ovalfoods" target="_blank" style="color:#fff; margin: 0 12px;">
             <i class="fab fa-facebook"></i>
         </a>
-        <a href="https://www.instagram.com/ovalfoods" target="_blank" style="color:white; margin: 0 10px;">
+        <a href="https://www.instagram.com/ovalfoods" target="_blank" style="color:#fff; margin: 0 12px;">
             <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.tiktok.com/@ovalfoods" target="_blank" style="color:white; margin: 0 10px;">
+        <a href="https://www.tiktok.com/@ovalfoods" target="_blank" style="color:#fff; margin: 0 12px;">
             <i class="fab fa-tiktok"></i>
         </a>
-        <a href="https://wa.me/01050888270" target="_blank" style="color:white; margin: 0 10px;">
+        <a href="https://wa.me/201050888270" target="_blank" style="color:#fff; margin: 0 12px;">
             <i class="fab fa-whatsapp"></i>
         </a>
-    </p>
+    </div>
+
 </footer>
+
 
 <script>
     const headers = document.querySelectorAll('.branch-header');
