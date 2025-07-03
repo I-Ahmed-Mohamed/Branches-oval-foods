@@ -4,83 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فروع Oval Foods</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-vTUnRzOpiEZdCgx8Vfwmlz58V0v2V6mFXRIbCNHvVmMJLDzqH2bU94/hq7xA0MZwlce5cPh+qtvUpS6h+DQzHg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-   <style>
-    body {
-        font-family: 'Cairo', sans-serif;
-        background-color: #f7f9fc;
-        margin: 0;
-        padding: 20px;
-        color: #333;
-    }
-
-    .logo {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .logo img {
-        width: 220px;
-        height: auto;
-    }
-
-    h1 {
-        text-align: center;
-        color: #2e7d32;
-        margin-bottom: 35px;
-        font-size: 30px;
-        letter-spacing: 1px;
-    }
-
-    .branch {
-        background-color: #ffffff;
-        border: 1px solid #d0e4d7;
-        border-radius: 12px;
-        margin-bottom: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s;
-    }
-
-    .branch:hover {
-        transform: translateY(-3px);
-    }
-
-    .branch-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 15px 20px;
-        background-color: #4caf50;
-        color: #fff;
-        cursor: pointer;
-        font-size: 19px;
-        font-weight: 500;
-        transition: background-color 0.3s;
-    }
-
-    .branch-header img {
-        width: 28px;
-        height: 28px;
-    }
-
-    .branch-header:hover {
-        background-color: #388e3c;
-    }
-
-    .branch-content {
-        display: none;
-        padding: 15px 20px;
-        background-color: #f9fafb;
-        color: #444;
-        line-height: 1.9;
-        font-size: 16px;
-    }
-</style>
-
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo img {
+            width: 180px;
+            height: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 35px;
+            font-size: 32px;
+            letter-spacing: 1px;
+        }
+        .branch {
+            background-color: #fff;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .branch:hover {
+            transform: translateY(-3px);
+        }
+        .branch-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .branch-header i {
+            font-size: 24px;
+        }
+        .branch-content {
+            display: none;
+            padding: 15px 25px;
+            background-color: #f9fafb;
+            color: #555;
+            line-height: 1.9;
+            font-size: 16px;
+        }
+        footer {
+            background-color: #28a745;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 40px;
+            text-align: center;
+            border-radius: 12px;
+        }
+        footer h2 {
+            margin-bottom: 20px;
+        }
+        footer p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        footer a {
+            color: white;
+            margin: 0 12px;
+            font-size: 26px;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #c8e6c9;
+        }
+    </style>
 </head>
 <body>
 
@@ -88,186 +96,124 @@
     <img src="image/Screenshot 2025-07-03 192620.png" alt="Oval Foods Logo">
 </div>
 
-<h1 style="text-align: center; color: #28a745; margin-bottom: 30px;">
-    جميع الفروع التي نورد إليها من Oval Foods
-</h1>
+<h1>فروع Oval Foods التي نورد إليها</h1>
 
-<!-- مجموعة سبينس -->
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع سبينس
+        <i class="fas fa-store"></i> جميع فروع سبينس
     </div>
     <div class="branch-content">
-        - التجمع: مول ايناوك - مول ارينا - مكسيم مول - بيرلي دي رويز <br>
-        - اكتوبر وزايد: مول العرب - مزارا مول - سيتي سكيب - استرادا مول - سويل ليك مول <br>
-        - مدينة نصر: سالي مولي - توكانو مول <br>
-        - الهرم <br>
-        - المقطم <br>
-        - الدقي <br>
-        - المعادي: جراند مول <br>
-        - زهرات المعادي: مول الخمسين <br>
-        - المهندسين: شارع سوريا - شارع جزيرة العرب <br>
-        - الشروق: سيتي بلازا مول <br>
-        - العبور: هب مول
+        التجمع: مول ايناوك - مول ارينا - مكسيم مول - بيرلي دي رويز<br>
+        اكتوبر وزايد: مول العرب - مزارا مول - سيتي سكيب - استرادا مول - سويل ليك مول<br>
+        مدينة نصر: سالي مولي - توكانو مول<br>
+        الهرم - المقطم - الدقي - المعادي: جراند مول<br>
+        زهراء المعادي: مول الخمسين<br>
+        المهندسين: شارع سوريا - شارع جزيرة العرب<br>
+        الشروق: سيتي بلازا مول<br>
+        العبور: هب مول
     </div>
 </div>
 
-<!-- الفار -->
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع الفار
+        <i class="fas fa-prescription-bottle-alt"></i> جميع فروع الفار
     </div>
     <div class="branch-content">
-        التجمع الخامس شارع التسعين الشمالي - شارع التسعين الجنوبي - شارع الميرغني مصر الجديده - الشيخ زايد - مدينتي أمام طريق السويس - التجمع التالت مول اربيلا - الفار مفيدا
+        التجمع الخامس - التسعين الشمالي - التسعين الجنوبي - مصر الجديدة - الشيخ زايد - مدينتي - اربيلا مول - مفيدا
     </div>
 </div>
 
-<!-- بنده سوبر -->
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع بنده سوبر
+        <i class="fas fa-shopping-basket"></i> جميع فروع بنده سوبر
     </div>
     <div class="branch-content">
         اكتوبر - العبور - المعادي - مدينة نصر - الرحاب - قها
     </div>
 </div>
 
-<!-- اوسكار -->
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع اوسكار جراند ستورز
+        <i class="fas fa-store-alt"></i> جميع فروع أوسكار جراند ستورز
     </div>
     <div class="branch-content">
-        التجمع شارع التسعين الشمالي - مدينتي - زهراء المعادي - الشيخ زايد
+        التجمع - مدينتي - زهراء المعادي - الشيخ زايد
     </div>
 </div>
 
-<!-- اللولو -->
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع اللولو هايبر ماركت
+        <i class="fas fa-shopping-cart"></i> جميع فروع اللولو هايبر ماركت
     </div>
     <div class="branch-content">
-        التجمع الاول أمام أكاديمية الشرطه - التجمع الخامس بارك مول - شيراتون نادي وادي دجله
+        التجمع الأول - التجمع الخامس - شيراتون - نادي وادي دجلة
     </div>
 </div>
 
-<!-- سوان مارت -->
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع سوان مارت
+        <i class="fas fa-store"></i> جميع فروع سوان مارت
     </div>
     <div class="branch-content">
         الدقي - زهراء المعادي
     </div>
 </div>
 
-<!-- باقي الفروع -->
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جيان مارت
+        <i class="fas fa-shopping-bag"></i> جيان مارت
     </div>
     <div class="branch-content">جميع الفروع</div>
 </div>
 
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جودز مارت
+        <i class="fas fa-shopping-bag"></i> جودز مارت
     </div>
     <div class="branch-content">جميع الفروع</div>
 </div>
 
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        فندق الماسة
+        <i class="fas fa-hotel"></i> فندق الماسة
     </div>
     <div class="branch-content">جميع الفروع</div>
 </div>
 
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        فندق ماريوت
+        <i class="fas fa-hotel"></i> فندق ماريوت
     </div>
     <div class="branch-content">جميع الفروع</div>
 </div>
 
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        فندق هيلتون
+        <i class="fas fa-hotel"></i> فندق هيلتون
     </div>
     <div class="branch-content">جميع الفروع</div>
 </div>
 
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع بيم
+        <i class="fas fa-store"></i> جميع فروع بيم
     </div>
     <div class="branch-content">في أنحاء الجمهورية</div>
 </div>
 
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع كازيون
+        <i class="fas fa-store"></i> جميع فروع كازيون
     </div>
     <div class="branch-content">في أنحاء الجمهورية</div>
 </div>
 
 <div class="branch">
     <div class="branch-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="فرع">
-        جميع فروع وكالة المنصورة
+        <i class="fas fa-store"></i> جميع فروع وكالة المنصورة
     </div>
     <div class="branch-content">الدقهلية</div>
 </div>
-
-<!-- رابط أيقونات Font Awesome -->
-<!-- رابط Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<footer style="background-color: #28a745; color: white; padding: 30px 20px; margin-top: 30px; text-align: center; border-radius: 12px; font-family: 'Cairo', sans-serif;">
-    
-    <h2 style="margin-bottom: 20px;">تواصل معنا</h2>
-
-    <div style="font-size: 18px; margin-bottom: 20px; line-height: 1.8;">
-        <p><i class="fas fa-map-marker-alt" style="margin-left: 8px;"></i> 6 أكتوبر - الحي الثالث - شارع أربعين - عمارة 1616 - شقة 3</p>
-        <p><i class="fas fa-phone-alt" style="margin-left: 8px; color: #d0e4d7;" ></i> 01033362323 - 01050888270</p>
-    </div>
-
-    <div style="font-size: 30px; margin-top: 15px;">
-        <a href="https://www.facebook.com/ovalfoods" target="_blank" style="color:#fff; margin: 0 15px;">
-            <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://www.instagram.com/ovalfoods" target="_blank" style="color:#fff; margin: 0 15px;">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.tiktok.com/@ovalfoods" target="_blank" style="color:#fff; margin: 0 15px;">
-            <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://wa.me/201050888270" target="_blank" style="color:#fff; margin: 0 15px;">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="mailto:ovalco2@gmail.com" target="_blank" style="color:#fff; margin: 0 15px;">
-            <i class="fas fa-envelope"></i>
-        </a>
-    </div>
-
-</footer>
-
-
-
 
 <script>
     const headers = document.querySelectorAll('.branch-header');
@@ -278,6 +224,21 @@
         });
     });
 </script>
+
+<footer>
+    <h2>تواصل معنا</h2>
+
+    <p><i class="fas fa-map-marker-alt"></i> 6 أكتوبر - الحي الثالث - شارع أربعين - عمارة 1616 - شقة 3</p>
+    <p><i class="fas fa-phone-alt"></i> 01033362323 - 01050888270</p>
+
+    <div style="font-size: 28px; margin-top: 15px;">
+        <a href="https://www.facebook.com/ovalfoods" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/ovalfoods" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@ovalfoods" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.me/201050888270" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:ovalco2@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    </div>
+</footer>
 
 </body>
 </html>
