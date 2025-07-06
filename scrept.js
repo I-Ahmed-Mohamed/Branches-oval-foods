@@ -21,3 +21,23 @@ headers.forEach(header => {
             branch.style.display = text.includes(value) ? 'block' : 'none';
         });
     });
+
+
+    
+
+function shareSite() {
+    const shareData = {
+        title: 'Oval Foods',
+        text: 'تعرف على فروع Oval Foods والمنتجات المميزة!',
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData)
+            .then(() => console.log('تمت المشاركة بنجاح'))
+            .catch((err) => console.error('خطأ في المشاركة:', err));
+    } else {
+        // لو المتصفح لا يدعم Web Share API يفتح واتساب
+        window.open(`https://wa.me/?text=${encodeURIComponent(shareData.text + ' ' + shareData.url)}`, '_blank');
+    }
+}
