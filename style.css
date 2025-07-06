@@ -86,4 +86,32 @@ footer a {
 }
 footer a:hover {
     color: #c8e6c9;
+
 }
+
+
+/* تنسيق البحث */
+.search-container {
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+#searchInput {
+    width: 90%;
+    max-width: 500px;
+    padding: 12px 20px;
+    border: 2px solid #4caf50;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #00796b;
+    box-shadow: 0 4px 12px rgba(0, 121, 107, 0.2);
+}
+
