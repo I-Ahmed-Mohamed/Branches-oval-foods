@@ -9,7 +9,7 @@ body {
 
 header  {
     background-color: #2e7d32;
-    color: #ff8202;
+    color: #fff;
     padding: 20px;
     text-align: center;
     margin: 0;
@@ -73,7 +73,7 @@ header  {
 }
 
 .product h3 {
-    color: #388e3c;
+    color: #ff8202;
 }
 
 footer {
