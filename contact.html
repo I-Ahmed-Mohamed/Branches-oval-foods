@@ -108,26 +108,26 @@ footer {
     <a href="index.html"><i class="fas fa-home"></i> الصفحة الرئيسية</a>
 </div>
 
-<div class="container">
-    <h1>أرسل لنا شكواك</h1>
-    <label for="complaint">اكتب شكواك بالتفصيل:</label>
-    <textarea id="complaint" placeholder="مثال: لدي مشكلة في المنتج أو الخدمة..."></textarea>
-    <button onclick="sendComplaint()"><i class="fab fa-whatsapp"></i> إرسال عبر واتساب</button>
-</div>
+<section style="background-color: #f1f8e9; padding: 40px; text-align: center; border-radius: 12px; margin: 50px auto; max-width: 900px;">
+    <h2 style="color: #2e7d32; margin-bottom: 20px;"><i class="fas fa-headset"></i> هل تواجه مشكلة؟</h2>
+    <p style="font-size: 18px; color: #333; margin-bottom: 30px;">
+        إذا واجهتك أي مشكلة أو كنت بحاجة للمساعدة، لا تتردد في التواصل معنا عبر الواتساب، وسنقوم بمساعدتك في أقرب وقت.
+    </p>
+    <a href="https://wa.me/201094547599" target="_blank" style="padding: 15px 30px; background-color: #25D366; color: white; font-size: 18px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
+        <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
+    </a>
+</section>
+
 
 <script>
-function sendComplaint() {
-    const complaintText = document.getElementById('complaint').value.trim();
-    if (!complaintText) {
-        alert('من فضلك اكتب تفاصيل الشكوى قبل الإرسال.');
-        return;
-    }
-    const phoneNumber = '201094547599';
-    const message = encodeURIComponent(`مرحبًا، لدي شكوى:\n${complaintText}`);
-    const url = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(url, '_blank');
+function sendWhatsApp() {
+    const message = encodeURIComponent("مرحبًا، لدي شكوى بخصوص الخدمة");
+    const phone = "201094547599"; // بدون +
+    const url = `https://wa.me/${phone}?text=${message}`;
+    window.open(url, '_blank'); // هيفتح واتساب
 }
 </script>
+
 
 <footer>
     جميع الحقوق محفوظة &copy; Oval Foods 2025
