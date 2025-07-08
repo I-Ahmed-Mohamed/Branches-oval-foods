@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نبذة عن Oval Foods</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="about.css">
+</head>
+<body>
+<header>
+    <h1><i class="fas fa-info-circle"></i> من نحن</h1>
+</header>
+
+<div class="home-link">
+    <a href="index.html">الصفحة الرئيسية</a>
+</div>
+
+
+<style>
+body {
+    font-family: 'Cairo', sans-serif;
+    background: #f0f4f7;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 25px;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+textarea {
+    width: 100%;
+    height: 120px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+button {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #1b5e20;
+}
+</style>
+
+
+
+<div class="container">
+    <h1>نموذج الشكاوى</h1>
+    <label for="complaint">اكتب شكواك هنا:</label>
+    <textarea id="complaint" placeholder="من فضلك اكتب تفاصيل الشكوى..."></textarea>
+    <button onclick="sendComplaint()">إرسال عبر واتساب</button>
+</div>
+
+<script>
+function sendComplaint() {
+    const complaintText = document.getElementById('complaint').value.trim();
+    if (!complaintText) {
+        alert('من فضلك اكتب الشكوى قبل الإرسال.');
+        return;
+    }
+    const phoneNumber = '201094547599'; // رقمك بدون "+" وبالكود الدولي
+    const message = encodeURIComponent('مرحبًا، لدي شكوى: \n' + complaintText);
+    const url = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(url, '_blank');
+}
+</script>
+
+<footer>
+    جميع الحقوق محفوظة &copy; Oval Foods 2025
+</footer>
+
+</body>
+</html>
