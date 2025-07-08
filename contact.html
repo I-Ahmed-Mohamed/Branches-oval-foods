@@ -170,7 +170,7 @@ footer {
 
 <script>
 function sendWhatsApp() {
-    const message = encodeURIComponent("مرحبًا، لدي شكوى: \n" + document.getElementById('complaint').value);
+    const message = encodeURIComponent("  \n" + document.getElementById('complaint').value);
     const phone = "201094547599";
     const url = `https://wa.me/${phone}?text=${message}`;
     window.open(url, '_blank');
