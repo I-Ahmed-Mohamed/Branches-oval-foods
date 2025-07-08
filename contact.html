@@ -3,83 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نبذة عن Oval Foods</title>
+<title>نموذج الشكاوى - Oval Foods</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="about.css">
-</head>
-<body>
-<header>
-    <h1><i class="fas fa-info-circle"></i> من نحن</h1>
-</header>
-
-<div class="home-link">
-    <a href="index.html">الصفحة الرئيسية</a>
-</div>
-
-
 <style>
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #e8f5e9, #ffffff);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+header {
+    background-color: #2e7d32;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+.home-link {
+    text-align: center;
+    margin: 20px;
+}
+.home-link a {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.home-link a:hover {
+    background-color: #388e3c;
+}
 
-.header{
-    color: #fff;
-}
 .container {
-    max-width: 600px;
-    margin: auto;
+    max-width: 650px;
+    margin: 40px auto;
     background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
-h1 {
+
+.container h1 {
     text-align: center;
     color: #2e7d32;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
+
 label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     font-weight: bold;
+    color: #555;
+    font-size: 18px;
 }
+
 textarea {
     width: 100%;
-    height: 120px;
+    height: 140px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    resize: vertical;
 }
+
 button {
+    display: block;
+    width: 100%;
     background-color: #2e7d32;
     color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
+    padding: 14px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    transition: background 0.3s;
 }
+
 button:hover {
     background-color: #1b5e20;
 }
+
+footer {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    margin-top: 40px;
+    font-size: 14px;
+}
 </style>
+</head>
+<body>
 
+<header>
+    <i class="fas fa-comment-dots"></i> نموذج الشكاوى
+</header>
 
+<div class="home-link">
+    <a href="index.html"><i class="fas fa-home"></i> الصفحة الرئيسية</a>
+</div>
 
 <div class="container">
-    <h1>نموذج الشكاوى</h1>
-    <label for="complaint">اكتب شكواك هنا:</label>
-    <textarea id="complaint" placeholder="من فضلك اكتب تفاصيل الشكوى..."></textarea>
-    <button onclick="sendComplaint()">إرسال عبر واتساب</button>
+    <h1>أرسل لنا شكواك</h1>
+    <label for="complaint">اكتب شكواك بالتفصيل:</label>
+    <textarea id="complaint" placeholder="مثال: لدي مشكلة في المنتج أو الخدمة..."></textarea>
+    <button onclick="sendComplaint()"><i class="fab fa-whatsapp"></i> إرسال عبر واتساب</button>
 </div>
 
 <script>
 function sendComplaint() {
     const complaintText = document.getElementById('complaint').value.trim();
     if (!complaintText) {
-        alert('من فضلك اكتب الشكوى قبل الإرسال.');
+        alert('من فضلك اكتب تفاصيل الشكوى قبل الإرسال.');
         return;
     }
-    const phoneNumber = '201094547599'; // رقمك بدون "+" وبالكود الدولي
-    const message = encodeURIComponent('مرحبًا، لدي شكوى: \n' + complaintText);
+    const phoneNumber = '201094547599';
+    const message = encodeURIComponent(`مرحبًا، لدي شكوى:\n${complaintText}`);
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(url, '_blank');
 }
