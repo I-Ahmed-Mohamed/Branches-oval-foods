@@ -2,6 +2,8 @@
 
 body {
     font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e0f2f1, #f1f8e9);
+
     margin: 0;
     padding: 0;
     direction: rtl;
@@ -60,7 +62,7 @@ header  {
 
 .product {
     width: 300px;
-    background: #fff;
+    background: #2e7d32;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -74,6 +76,9 @@ header  {
 
 .product h3 {
     color: #ff8202;
+}
+.product p {
+    color: #fff
 }
 
 footer {
