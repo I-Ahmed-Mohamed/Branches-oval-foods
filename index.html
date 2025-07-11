@@ -33,49 +33,6 @@
 <div class="search-container">
     <input type="text" id="searchInput" placeholder=" ابحث عن فرع او منطقة ..." />
 </div>
-
-
-
-<div class="branches-grid" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
-  <div onclick="showBranch('noon')" style="cursor:pointer; text-align:center;">
-    <img src="image/نون.png" alt="نون" style="width:80px; height:80px; border-radius:50%;"><br> نون
-  </div>
-  <div onclick="showBranch('spinneys')" style="cursor:pointer; text-align:center;">
-    <img src="image/سبينس.jpg" alt="سبينس" style="width:80px; height:80px; border-radius:50%;"><br> سبينس
-  </div>
-  <div onclick="showBranch('alfaar')" style="cursor:pointer; text-align:center;">
-    <img src="image/الفار.jpg" alt="الفار" style="width:80px; height:80px; border-radius:50%;"><br> الفار
-  </div>
-  <div onclick="showBranch('panda')" style="cursor:pointer; text-align:center;">
-    <img src="image/بنده.jpg" alt="بنده" style="width:80px; height:80px; border-radius:50%;"><br> بنده
-  </div>
-  <div onclick="showBranch('oscar')" style="cursor:pointer; text-align:center;">
-    <img src="image/اوسكار.jpg" alt="اوسكار" style="width:80px; height:80px; border-radius:50%;"><br> أوسكار
-  </div>
-  <div onclick="showBranch('lulu')" style="cursor:pointer; text-align:center;">
-    <img src="image/لولو.jpg" alt="لولو" style="width:80px; height:80px; border-radius:50%;"><br> لولو
-  </div>
-  <div onclick="showBranch('swan')" style="cursor:pointer; text-align:center;">
-    <img src="image/سوان.jpeg" alt="سوان" style="width:80px; height:80px; border-radius:50%;"><br> سوان
-  </div>
-  <div onclick="showBranch('geant')" style="cursor:pointer; text-align:center;">
-    <img src="image/جيان.jpg" alt="جيان" style="width:80px; height:80px; border-radius:50%;"><br> جيان
-  </div>
-  <div onclick="showBranch('goods')" style="cursor:pointer; text-align:center;">
-    <img src="image/جودذ.jpg" alt="جودز" style="width:80px; height:80px; border-radius:50%;"><br> جودز
-  </div>
-  <div onclick="showBranch('bim')" style="cursor:pointer; text-align:center;">
-    <img src="image/بيم.jpg" alt="بيم" style="width:80px; height:80px; border-radius:50%;"><br> بيم
-  </div>
-  <div onclick="showBranch('kazyon')" style="cursor:pointer; text-align:center;">
-    <img src="image/كازيون.jpeg" alt="كازيون" style="width:80px; height:80px; border-radius:50%;"><br> كازيون
-  </div>
-  <div onclick="showBranch('mansoura')" style="cursor:pointer; text-align:center;">
-        <img src="image/وكاله المنصوره.jpg" alt="كازيون" style="width:80px; height:80px; border-radius:50%;"><br> وكالة المنصورة
-
-  </div>
-</div>
-
 <!-- النافذة المنبثقة للفروع -->
 <div id="branchModal" class="branch-modal">
   <div class="modal-content">
@@ -95,10 +52,6 @@
   backdrop-filter: blur(4px);
   justify-content: center;
   align-items: center;
-}
-img{
-      border: 2px solid lab(62.83% 40.74 69);
-
 }
 .modal-content {
   background: rgba(255, 255, 255, 0.95);
@@ -132,7 +85,85 @@ img{
   text-decoration: none;
 }
 .modal-content a:hover { background-color: #1b5e20; }
+
+/* استايل الستوري */
+.story-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+  scrollbar-width: none;
+}
+.story-container::-webkit-scrollbar {
+  display: none;
+}
+.story {
+  flex: 0 0 auto;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.story:hover {
+  transform: scale(1.1);
+}
+.story img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
 </style>
+
+<div class="story-container">
+  <div class="story" onclick="showBranch('noon')">
+    <img src="image/نون.png" alt="نون">
+    <div>نون</div>
+  </div>
+  <div class="story" onclick="showBranch('spinneys')">
+    <img src="image/سبينس.jpg" alt="سبينس">
+    <div>سبينس</div>
+  </div>
+  <div class="story" onclick="showBranch('alfaar')">
+    <img src="image/الفار.jpg" alt="الفار">
+    <div>الفار</div>
+  </div>
+  <div class="story" onclick="showBranch('panda')">
+    <img src="image/بنده.jpg" alt="بنده">
+    <div>بنده</div>
+  </div>
+  <div class="story" onclick="showBranch('oscar')">
+    <img src="image/اوسكار.jpg" alt="أوسكار">
+    <div>أوسكار</div>
+  </div>
+  <div class="story" onclick="showBranch('lulu')">
+    <img src="image/لولو.jpg" alt="لولو">
+    <div>لولو</div>
+  </div>
+  <div class="story" onclick="showBranch('swan')">
+    <img src="image/سوان.jpeg" alt="سوان">
+    <div>سوان</div>
+  </div>
+  <div class="story" onclick="showBranch('geant')">
+    <img src="image/جيان.jpg" alt="جيان">
+    <div>جيان</div>
+  </div>
+  <div class="story" onclick="showBranch('goods')">
+    <img src="image/جودذ.jpg" alt="جودز">
+    <div>جودز</div>
+  </div>
+  <div class="story" onclick="showBranch('bim')">
+    <img src="image/بيم.jpg" alt="بيم">
+    <div>بيم</div>
+  </div>
+  <div class="story" onclick="showBranch('kazyon')">
+    <img src="image/كازيون.jpeg" alt="كازيون">
+    <div>كازيون</div>
+  </div>
+  <div class="story" onclick="showBranch('mansoura')">
+    <img src="image/وكاله المنصوره.jpg" alt="كازيون">
+    <div>وكالة المنصورة</div>
+  </div>
+</div>
 
 <script>
 const branchesData = {
@@ -160,6 +191,7 @@ function closeBranch() {
   document.getElementById("branchModal").style.display = "none";
 }
 </script>
+
 
 
 
