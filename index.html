@@ -25,9 +25,6 @@
     </a>
 </div>
 
-
-
-
 <h3>  سلاسل السوبر ماركت التي يتواجد فيها Big Egg </h3>
   
 
@@ -36,6 +33,147 @@
 <div class="search-container">
     <input type="text" id="searchInput" placeholder=" ابحث عن فرع او منطقة ..." />
 </div>
+
+
+
+<div class="branches-grid" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
+  <div onclick="showBranch('noon')" style="cursor:pointer; text-align:center;">
+    <img src="image/نون.png" alt="نون" style="width:80px; height:80px; border-radius:50%;"><br> نون
+  </div>
+  <div onclick="showBranch('spinneys')" style="cursor:pointer; text-align:center;">
+    <img src="image/سبينس.jpg" alt="سبينس" style="width:80px; height:80px; border-radius:50%;"><br> سبينس
+  </div>
+  <div onclick="showBranch('alfaar')" style="cursor:pointer; text-align:center;">
+    <img src="image/الفار.jpg" alt="الفار" style="width:80px; height:80px; border-radius:50%;"><br> الفار
+  </div>
+  <div onclick="showBranch('panda')" style="cursor:pointer; text-align:center;">
+    <img src="image/بنده.jpg" alt="بنده" style="width:80px; height:80px; border-radius:50%;"><br> بنده
+  </div>
+  <div onclick="showBranch('oscar')" style="cursor:pointer; text-align:center;">
+    <img src="image/اوسكار.jpg" alt="اوسكار" style="width:80px; height:80px; border-radius:50%;"><br> أوسكار
+  </div>
+  <div onclick="showBranch('lulu')" style="cursor:pointer; text-align:center;">
+    <img src="image/لولو.jpg" alt="لولو" style="width:80px; height:80px; border-radius:50%;"><br> لولو
+  </div>
+  <div onclick="showBranch('swan')" style="cursor:pointer; text-align:center;">
+    <img src="image/سوان.jpeg" alt="سوان" style="width:80px; height:80px; border-radius:50%;"><br> سوان
+  </div>
+  <div onclick="showBranch('geant')" style="cursor:pointer; text-align:center;">
+    <img src="image/جيان.jpg" alt="جيان" style="width:80px; height:80px; border-radius:50%;"><br> جيان
+  </div>
+  <div onclick="showBranch('goods')" style="cursor:pointer; text-align:center;">
+    <img src="image/جودذ.jpg" alt="جودز" style="width:80px; height:80px; border-radius:50%;"><br> جودز
+  </div>
+  <div onclick="showBranch('bim')" style="cursor:pointer; text-align:center;">
+    <img src="image/بيم.jpg" alt="بيم" style="width:80px; height:80px; border-radius:50%;"><br> بيم
+  </div>
+  <div onclick="showBranch('kazyon')" style="cursor:pointer; text-align:center;">
+    <img src="image/كازيون.jpeg" alt="كازيون" style="width:80px; height:80px; border-radius:50%;"><br> كازيون
+  </div>
+  <div onclick="showBranch('mansoura')" style="cursor:pointer; text-align:center;">
+        <img src="image/وكاله المنصوره.jpg" alt="كازيون" style="width:80px; height:80px; border-radius:50%;"><br> وكالة المنصورة
+
+  </div>
+</div>
+
+<!-- النافذة المنبثقة للفروع -->
+<div id="branchModal" class="branch-modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeBranch()">&times;</span>
+    <div id="branchDetails"></div>
+  </div>
+</div>
+
+<style>
+.branch-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  max-width: 600px;
+  width: 90%;
+  padding: 30px;
+  position: relative;
+  color: #333;
+  text-align: right;
+  animation: zoomIn 0.3s ease;
+}
+@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.close {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 28px;
+  color: #444;
+  cursor: pointer;
+}
+.modal-content ul { padding-right: 20px; list-style-type: disc; }
+.modal-content a {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #2e7d32;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.modal-content a:hover { background-color: #1b5e20; }
+</style>
+
+<script>
+const branchesData = {
+  noon: `<ul><li>الساحل</li></ul><a href="https://www.noon.com/egypt-en/pickup-points/" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`,
+  spinneys: `<ul><li>التجمع: مول ايناوك، مول ارينا، مكسيم مول، بيرلي دي رويز</li><li>أكتوبر وزايد: مول العرب، مزارا مول، سيتي سكيب، استرادا مول، سويل ليك مول</li><li>مدينة نصر: سالي مول، توكانو مول</li><li>الهرم، المقطم، الدقي، المعادي، زهراء المعادي، المهندسين، الشروق، العبور</li></ul><a href="https://www.google.com/maps?q=Spinneys+Egypt" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`,
+  alfaar: `<ul><li>التجمع الخامس، التسعين الشمالي، التسعين الجنوبي، مصر الجديدة، الشيخ زايد، مدينتي، اربيلا مول، مفيدا</li></ul><a href="https://www.google.com/maps?q=الفار+ماركت+التجمع+الخامس" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`,
+  panda: `<ul><li>أكتوبر، العبور، المعادي، مدينة نصر، الرحاب، قها</li></ul><a href="https://www.google.com/maps/search/بنده+سوبر+ماركت" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`,
+  oscar: `<ul><li>التجمع، مدينتي، زهراء المعادي، الشيخ زايد</li></ul><a href="https://www.google.com/maps/search/أوسكار+جراند+ستورز" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`,
+  lulu: `<ul><li>التجمع الأول: أمام أكاديمية الشرطة</li><li>التجمع الخامس: بارك مول</li><li>شيراتون: نادي وادي دجلة</li></ul><a href="https://www.google.com/maps/search/اللولو+هايبر+ماركت" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`,
+  swan: `<ul><li>الدقي، زهراء المعادي</li></ul><a href="https://www.google.com/maps/search/سوان+مارت" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`,
+  geant: `<ul><li>الرحاب، التجمع</li></ul><a href="https://www.google.com/maps/search/جيان+مارت" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`,
+  goods: `<ul><li>جميع الفروع</li></ul><a href="https://www.google.com/maps/search/جودز+مارت" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض جميع الفروع على الخريطة</a>`,
+  bim: `<ul><li>في أنحاء الجمهورية</li></ul><a href="https://www.google.com/maps/search/بيم+مصر" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض جميع الفروع على الخريطة</a>`,
+  kazyon: `<ul><li>في أنحاء الجمهورية</li></ul><a href="https://www.google.com/maps/search/كازيون+مصر" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض جميع الفروع على الخريطة</a>`,
+  mansoura: `<ul><li>الدقهلية</li></ul><a href="https://www.google.com/maps/search/وكالة+المنصورة+الدقهلية" target="_blank"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</a>`
+};
+
+function showBranch(branchName) {
+  const modal = document.getElementById("branchModal");
+  document.getElementById("branchDetails").innerHTML = branchesData[branchName] || "لم يتم العثور على بيانات";
+  modal.style.display = "flex";
+}
+
+function closeBranch() {
+  document.getElementById("branchModal").style.display = "none";
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
 
 
 
@@ -283,7 +421,7 @@
         </p>
     </div>
 </div>
-
+ -->
 
 
 

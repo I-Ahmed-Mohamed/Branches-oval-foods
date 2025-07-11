@@ -41,3 +41,13 @@ function shareSite() {
         window.open(`https://wa.me/?text=${encodeURIComponent(shareData.text + ' ' + shareData.url)}`, '_blank');
     }
 }
+
+const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    breakpoints: {
+        320: { slidesPerView: 3 },
+        640: { slidesPerView: 4 },
+        1024: { slidesPerView: 6 }
+    },
+});
