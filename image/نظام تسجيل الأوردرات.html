@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///G:/%D8%B4%D8%B1%D9%83%D8%A9%20Oval/Cereat%20Orders/index.html -->
+<html lang="ar"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>نظام تسجيل الأوردرات</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header img {
+      width: 100px;
+      height: auto;
+    }
+    .tables-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+      gap: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+      text-align: center;
+      padding: 6px;
+    }
+    th {
+      background: #6c5ce7;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background: #f1f2f6;
+    }
+    tr:hover {
+      background: #dfe6e9;
+    }
+    .actions {
+      margin: 20px 0;
+      text-align: center;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      cursor: pointer;
+      background: #6c5ce7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #4834d4;
+    }
+    #summaryTable {
+      margin-top: 30px;
+      width: 100%;
+    }
+    .search-container {
+      margin: 20px 0;
+      text-align: center;
+    }
+    #searchInput {
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 5px;
+    }
+    .highlight {
+      background-color: #e0f7fa;
+    }
+    .order-header {
+      font-weight: bold;
+      font-size: 1.2em;
+      background: #a29bfe;
+      color: #fff;
+    }
+    @media print {
+      body { font-size: 8pt; margin: 3mm; }
+      .tables-container { display: block; }
+      table { width: 100%; font-size: 6pt; page-break-inside: avoid; margin-bottom: 3mm; }
+      th, td { padding: 1px; }
+      .actions, .search-container { display: none; }
+      .order-header { font-size: 8pt; }
+      #summaryTable { margin-top: 3mm; font-size: 6pt; }
+      h1, h2 { font-size: 9pt; }
+      header img { width: 30px; }
+      /* Hide rows with all zero quantities */
+      tr:has(input[value="0"][data-item$="أبيض"]):has(input[value="0"][data-item$="أحمر"]):has(input[value="0"][data-item$="بلدي"]) {
+        display: none;
+      }
+      /* Hide input fields and show their values as text */
+      input { border: none; background: transparent; font-size: 6pt; }
+      input[type="text"] { width: 100%; }
+      input[type="number"] { width: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="./نظام تسجيل الأوردرات_files/Screenshot 2025-08-27 100805.png" alt="لوجو الشركة">
+    <h1>أوفال لتغليف البيض</h1>
+    <p>تاريخ اليوم: <span id="todayDate">٢٧‏/٨‏/٢٠٢٥</span></p>
+  </header>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن أوردر باسم الفرع..." onkeyup="searchOrders()">
+  </div>
+
+  <div class="tables-container" id="tablesContainer"><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 1</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="0" data-item="اسم الفرع" onchange="updateOrder(0)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ٦-أبيض" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ٦-أحمر" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ٦-بلدي" onchange="updateOrder(0)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٠-أبيض" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٠-أحمر" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٠-بلدي" onchange="updateOrder(0)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٥-أبيض" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٥-أحمر" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٥-بلدي" onchange="updateOrder(0)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٨-أبيض" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٨-أحمر" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="عبوة ١٨-بلدي" onchange="updateOrder(0)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="0" data-item="طبق ٢٠-أبيض" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="طبق ٢٠-أحمر" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="طبق ٢٠-بلدي" onchange="updateOrder(0)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="0" data-item="طبق ٣٠-أبيض" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="طبق ٣٠-أحمر" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="طبق ٣٠-بلدي" onchange="updateOrder(0)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="0" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(0)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="0" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(0)"></td>
+              <td><input type="number" min="0" data-order="0" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(0)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(0)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(0)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 2</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="1" data-item="اسم الفرع" onchange="updateOrder(1)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ٦-أبيض" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ٦-أحمر" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ٦-بلدي" onchange="updateOrder(1)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٠-أبيض" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٠-أحمر" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٠-بلدي" onchange="updateOrder(1)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٥-أبيض" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٥-أحمر" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٥-بلدي" onchange="updateOrder(1)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٨-أبيض" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٨-أحمر" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="عبوة ١٨-بلدي" onchange="updateOrder(1)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="1" data-item="طبق ٢٠-أبيض" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="طبق ٢٠-أحمر" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="طبق ٢٠-بلدي" onchange="updateOrder(1)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="1" data-item="طبق ٣٠-أبيض" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="طبق ٣٠-أحمر" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="طبق ٣٠-بلدي" onchange="updateOrder(1)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="1" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(1)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="1" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(1)"></td>
+              <td><input type="number" min="0" data-order="1" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(1)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(1)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(1)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 3</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="2" data-item="اسم الفرع" onchange="updateOrder(2)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ٦-أبيض" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ٦-أحمر" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ٦-بلدي" onchange="updateOrder(2)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٠-أبيض" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٠-أحمر" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٠-بلدي" onchange="updateOrder(2)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٥-أبيض" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٥-أحمر" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٥-بلدي" onchange="updateOrder(2)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٨-أبيض" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٨-أحمر" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="عبوة ١٨-بلدي" onchange="updateOrder(2)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="2" data-item="طبق ٢٠-أبيض" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="طبق ٢٠-أحمر" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="طبق ٢٠-بلدي" onchange="updateOrder(2)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="2" data-item="طبق ٣٠-أبيض" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="طبق ٣٠-أحمر" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="طبق ٣٠-بلدي" onchange="updateOrder(2)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="2" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(2)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="2" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(2)"></td>
+              <td><input type="number" min="0" data-order="2" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(2)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(2)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(2)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 4</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="3" data-item="اسم الفرع" onchange="updateOrder(3)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ٦-أبيض" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ٦-أحمر" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ٦-بلدي" onchange="updateOrder(3)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٠-أبيض" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٠-أحمر" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٠-بلدي" onchange="updateOrder(3)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٥-أبيض" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٥-أحمر" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٥-بلدي" onchange="updateOrder(3)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٨-أبيض" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٨-أحمر" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="عبوة ١٨-بلدي" onchange="updateOrder(3)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="3" data-item="طبق ٢٠-أبيض" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="طبق ٢٠-أحمر" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="طبق ٢٠-بلدي" onchange="updateOrder(3)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="3" data-item="طبق ٣٠-أبيض" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="طبق ٣٠-أحمر" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="طبق ٣٠-بلدي" onchange="updateOrder(3)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="3" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(3)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="3" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(3)"></td>
+              <td><input type="number" min="0" data-order="3" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(3)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(3)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(3)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 5</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="4" data-item="اسم الفرع" onchange="updateOrder(4)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ٦-أبيض" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ٦-أحمر" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ٦-بلدي" onchange="updateOrder(4)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٠-أبيض" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٠-أحمر" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٠-بلدي" onchange="updateOrder(4)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٥-أبيض" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٥-أحمر" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٥-بلدي" onchange="updateOrder(4)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٨-أبيض" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٨-أحمر" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="عبوة ١٨-بلدي" onchange="updateOrder(4)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="4" data-item="طبق ٢٠-أبيض" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="طبق ٢٠-أحمر" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="طبق ٢٠-بلدي" onchange="updateOrder(4)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="4" data-item="طبق ٣٠-أبيض" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="طبق ٣٠-أحمر" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="طبق ٣٠-بلدي" onchange="updateOrder(4)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="4" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(4)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="4" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(4)"></td>
+              <td><input type="number" min="0" data-order="4" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(4)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(4)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(4)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 6</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="5" data-item="اسم الفرع" onchange="updateOrder(5)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ٦-أبيض" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ٦-أحمر" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ٦-بلدي" onchange="updateOrder(5)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٠-أبيض" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٠-أحمر" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٠-بلدي" onchange="updateOrder(5)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٥-أبيض" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٥-أحمر" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٥-بلدي" onchange="updateOrder(5)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٨-أبيض" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٨-أحمر" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="عبوة ١٨-بلدي" onchange="updateOrder(5)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="5" data-item="طبق ٢٠-أبيض" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="طبق ٢٠-أحمر" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="طبق ٢٠-بلدي" onchange="updateOrder(5)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="5" data-item="طبق ٣٠-أبيض" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="طبق ٣٠-أحمر" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="طبق ٣٠-بلدي" onchange="updateOrder(5)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="5" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(5)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="5" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(5)"></td>
+              <td><input type="number" min="0" data-order="5" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(5)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(5)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(5)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 7</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="6" data-item="اسم الفرع" onchange="updateOrder(6)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ٦-أبيض" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ٦-أحمر" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ٦-بلدي" onchange="updateOrder(6)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٠-أبيض" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٠-أحمر" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٠-بلدي" onchange="updateOrder(6)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٥-أبيض" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٥-أحمر" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٥-بلدي" onchange="updateOrder(6)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٨-أبيض" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٨-أحمر" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="عبوة ١٨-بلدي" onchange="updateOrder(6)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="6" data-item="طبق ٢٠-أبيض" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="طبق ٢٠-أحمر" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="طبق ٢٠-بلدي" onchange="updateOrder(6)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="6" data-item="طبق ٣٠-أبيض" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="طبق ٣٠-أحمر" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="طبق ٣٠-بلدي" onchange="updateOrder(6)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="6" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(6)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="6" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(6)"></td>
+              <td><input type="number" min="0" data-order="6" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(6)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(6)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(6)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 8</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="7" data-item="اسم الفرع" onchange="updateOrder(7)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ٦-أبيض" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ٦-أحمر" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ٦-بلدي" onchange="updateOrder(7)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٠-أبيض" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٠-أحمر" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٠-بلدي" onchange="updateOrder(7)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٥-أبيض" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٥-أحمر" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٥-بلدي" onchange="updateOrder(7)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٨-أبيض" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٨-أحمر" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="عبوة ١٨-بلدي" onchange="updateOrder(7)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="7" data-item="طبق ٢٠-أبيض" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="طبق ٢٠-أحمر" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="طبق ٢٠-بلدي" onchange="updateOrder(7)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="7" data-item="طبق ٣٠-أبيض" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="طبق ٣٠-أحمر" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="طبق ٣٠-بلدي" onchange="updateOrder(7)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="7" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(7)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="7" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(7)"></td>
+              <td><input type="number" min="0" data-order="7" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(7)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(7)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(7)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 9</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="8" data-item="اسم الفرع" onchange="updateOrder(8)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ٦-أبيض" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ٦-أحمر" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ٦-بلدي" onchange="updateOrder(8)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٠-أبيض" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٠-أحمر" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٠-بلدي" onchange="updateOrder(8)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٥-أبيض" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٥-أحمر" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٥-بلدي" onchange="updateOrder(8)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٨-أبيض" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٨-أحمر" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="عبوة ١٨-بلدي" onchange="updateOrder(8)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="8" data-item="طبق ٢٠-أبيض" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="طبق ٢٠-أحمر" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="طبق ٢٠-بلدي" onchange="updateOrder(8)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="8" data-item="طبق ٣٠-أبيض" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="طبق ٣٠-أحمر" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="طبق ٣٠-بلدي" onchange="updateOrder(8)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="8" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(8)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="8" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(8)"></td>
+              <td><input type="number" min="0" data-order="8" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(8)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(8)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(8)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table><table>
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر 10</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="9" data-item="اسم الفرع" onchange="updateOrder(9)"></td>
+          </tr>
+          
+            <tr>
+              <td>عبوة ٦</td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ٦-أبيض" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ٦-أحمر" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ٦-بلدي" onchange="updateOrder(9)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٠</td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٠-أبيض" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٠-أحمر" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٠-بلدي" onchange="updateOrder(9)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٥</td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٥-أبيض" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٥-أحمر" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٥-بلدي" onchange="updateOrder(9)"></td>
+            </tr>
+          
+            <tr>
+              <td>عبوة ١٨</td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٨-أبيض" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٨-أحمر" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="عبوة ١٨-بلدي" onchange="updateOrder(9)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٢٠</td>
+              <td><input type="number" min="0" data-order="9" data-item="طبق ٢٠-أبيض" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="طبق ٢٠-أحمر" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="طبق ٢٠-بلدي" onchange="updateOrder(9)"></td>
+            </tr>
+          
+            <tr>
+              <td>طبق ٣٠</td>
+              <td><input type="number" min="0" data-order="9" data-item="طبق ٣٠-أبيض" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="طبق ٣٠-أحمر" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="طبق ٣٠-بلدي" onchange="updateOrder(9)"></td>
+            </tr>
+          
+            <tr>
+              <td>شنطة بلاستيك ٣٠</td>
+              <td><input type="number" min="0" data-order="9" data-item="شنطة بلاستيك ٣٠-أبيض" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="شنطة بلاستيك ٣٠-أحمر" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="شنطة بلاستيك ٣٠-بلدي" onchange="updateOrder(9)"></td>
+            </tr>
+          
+            <tr>
+              <td>فاليو ٣٠</td>
+              <td><input type="number" min="0" data-order="9" data-item="فاليو ٣٠-أبيض" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="فاليو ٣٠-أحمر" onchange="updateOrder(9)"></td>
+              <td><input type="number" min="0" data-order="9" data-item="فاليو ٣٠-بلدي" onchange="updateOrder(9)"></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(9)">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(9)">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table></div>
+
+  <div class="actions">
+    <button onclick="addOrder()">➕ إضافة أوردر جديد</button>
+    <button onclick="saveOrders()">💾 حفظ الأوردرات</button>
+    <button onclick="printOrders()">🖨 طباعة الأوردرات</button>
+    <button onclick="exportToCSV()">📊 تصدير إلى CSV</button>
+    <button onclick="exportToPDF()">📄 تصدير إلى PDF</button>
+    <button onclick="sharePDF()">📲 مشاركة الـ PDF</button>
+  </div>
+
+  <h2>الإجمالي</h2>
+  <table id="summaryTable">
+    <thead>
+      <tr>
+        <th>الصنف</th>
+        <th>أبيض</th>
+        <th>أحمر</th>
+        <th>بلدي</th>
+      </tr>
+    </thead>
+    <tbody id="summaryBody">
+        <tr>
+          <td>عبوة ٦</td>
+          <td>16</td>
+          <td>29</td>
+          <td>22</td>
+        </tr>
+      
+        <tr>
+          <td>عبوة ١٠</td>
+          <td>46</td>
+          <td>45</td>
+          <td>16</td>
+        </tr>
+      
+        <tr>
+          <td>عبوة ١٥</td>
+          <td>29</td>
+          <td>34</td>
+          <td>24</td>
+        </tr>
+      
+        <tr>
+          <td>عبوة ١٨</td>
+          <td>30</td>
+          <td>47</td>
+          <td>37</td>
+        </tr>
+      
+        <tr>
+          <td>طبق ٢٠</td>
+          <td>39</td>
+          <td>22</td>
+          <td>16</td>
+        </tr>
+      
+        <tr>
+          <td>طبق ٣٠</td>
+          <td>221</td>
+          <td>109</td>
+          <td>56</td>
+        </tr>
+      
+        <tr>
+          <td>شنطة بلاستيك ٣٠</td>
+          <td>14</td>
+          <td>37</td>
+          <td>11</td>
+        </tr>
+      
+        <tr>
+          <td>فاليو ٣٠</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+  </table>
+
+  <script src="./نظام تسجيل الأوردرات_files/jspdf.umd.min.js.download"></script>
+  <script src="./نظام تسجيل الأوردرات_files/jspdf.plugin.autotable.min.js.download"></script>
+  <script>
+    const { jsPDF } = window.jspdf;
+    const orders = [];
+    const items = ["عبوة ٦", "عبوة ١٠", "عبوة ١٥", "عبوة ١٨", "طبق ٢٠", "طبق ٣٠", "شنطة بلاستيك ٣٠", "فاليو ٣٠"];
+    document.getElementById("todayDate").textContent = new Date().toLocaleDateString("ar-EG");
+
+    let fontData;
+    const fontUrl = "https://raw.githubusercontent.com/aliftype/amiri/main/Amiri-Regular.ttf";
+    fetch(fontUrl)
+      .then(response => {
+        if (!response.ok) throw new Error("فشل تحميل الخط");
+        return response.arrayBuffer();
+      })
+      .then(data => {
+        fontData = data;
+      })
+      .catch(error => {
+        console.error("خطأ في تحميل الخط:", error);
+        alert("تعذر تحميل الخط. الرجاء التأكد من الاتصال بالإنترنت.");
+      });
+
+    function addOrder() {
+      const container = document.getElementById("tablesContainer");
+      const table = document.createElement("table");
+      const orderIndex = orders.length;
+
+      table.innerHTML = `
+        <thead>
+          <tr><th colspan="4" class="order-header">أوردر ${orderIndex + 1}</th></tr>
+          <tr>
+            <th>الصنف</th>
+            <th>أبيض</th>
+            <th>أحمر</th>
+            <th>بلدي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">اسم الفرع: <input type="text" data-order="${orderIndex}" data-item="اسم الفرع" onchange="updateOrder(${orderIndex})"></td>
+          </tr>
+          ${items.map(item => `
+            <tr>
+              <td>${item}</td>
+              <td><input type="number" min="0" data-order="${orderIndex}" data-item="${item}-أبيض" onchange="updateOrder(${orderIndex})"></td>
+              <td><input type="number" min="0" data-order="${orderIndex}" data-item="${item}-أحمر" onchange="updateOrder(${orderIndex})"></td>
+              <td><input type="number" min="0" data-order="${orderIndex}" data-item="${item}-بلدي" onchange="updateOrder(${orderIndex})"></td>
+            </tr>
+          `).join('')}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <button onclick="editOrder(${orderIndex})">✏ تعديل الأوردر</button>
+              <button onclick="deleteOrder(${orderIndex})">🗑 حذف الأوردر</button>
+            </td>
+          </tr>
+        </tfoot>
+      `;
+      container.appendChild(table);
+      orders.push({});
+    }
+
+    function updateOrder(orderIndex) {
+      const inputs = document.querySelectorAll(`input[data-order="${orderIndex}"]`);
+      const order = {};
+      inputs.forEach(input => {
+        if (input.type === "number") {
+          order[input.dataset.item] = parseInt(input.value) || 0;
+        } else {
+          order[input.dataset.item] = input.value || "";
+        }
+      });
+      orders[orderIndex] = order;
+      updateSummary();
+    }
+
+    function deleteOrder(orderIndex) {
+      if (confirm("هل أنت متأكد من حذف الأوردر " + (orderIndex + 1) + "؟")) {
+        orders.splice(orderIndex, 1);
+        const container = document.getElementById("tablesContainer");
+        container.innerHTML = "";
+        const currentOrders = [...orders];
+        orders.length = 0;
+        currentOrders.forEach((order) => {
+          addOrder();
+          const newOrderIndex = orders.length - 1;
+          orders[newOrderIndex] = order;
+          const inputs = document.querySelectorAll(`input[data-order="${newOrderIndex}"]`);
+          inputs.forEach(input => {
+            input.value = order[input.dataset.item] || "";
+          });
+        });
+        updateSummary();
+      }
+    }
+
+    function searchOrders() {
+      const searchValue = document.getElementById("searchInput").value.toLowerCase();
+      const tables = document.querySelectorAll("#tablesContainer table");
+      tables.forEach((table, index) => {
+        const branchName = orders[index]["اسم الفرع"]?.toLowerCase() || "";
+        if (searchValue === "") {
+          table.style.display = "";
+          table.classList.remove("highlight");
+        } else if (branchName.includes(searchValue)) {
+          table.style.display = "";
+          table.classList.add("highlight");
+        } else {
+          table.style.display = "none";
+          table.classList.remove("highlight");
+        }
+      });
+    }
+
+    function saveOrders() {
+      if (orders.length === 0) {
+        alert("لا توجد أوردرات لحفظها!");
+        return;
+      }
+      const emptyBranches = orders.filter(order => !order["اسم الفرع"]).length;
+      if (emptyBranches > 0) {
+        alert(`يوجد ${emptyBranches} أوردر بدون اسم فرع. الرجاء إدخال أسماء الفروع.`);
+        return;
+      }
+      alert("تم حفظ جميع الأوردرات بنجاح ✅");
+      localStorage.setItem("orders", JSON.stringify(orders));
+    }
+
+    function exportToCSV() {
+      if (orders.length === 0) {
+        alert("لا توجد أوردرات لتصديرها!");
+        return;
+      }
+      let csvContent = "\uFEFF";
+      csvContent += `رقم الأوردر,اسم الفرع,${items.map(item => `"${item}-أبيض","${item}-أحمر","${item}-بلدي"`).join(",")}\n`;
+      orders.forEach((order, index) => {
+        const row = [`${index + 1}`, `"${order["اسم الفرع"] || ""}"`];
+        items.forEach(item => {
+          row.push(order[`${item}-أبيض`] || 0);
+          row.push(order[`${item}-أحمر`] || 0);
+          row.push(order[`${item}-بلدي`] || 0);
+        });
+        csvContent += row.join(",") + "\n";
+      });
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `orders_${new Date().toLocaleDateString("ar-EG")}.csv`;
+      link.click();
+    }
+
+    function generatePDF() {
+      if (!fontData) {
+        alert("الخط غير متوفر. الرجاء الانتظار قليلاً أو التحقق من الاتصال.");
+        return null;
+      }
+      const doc = new jsPDF({
+        orientation: 'p',
+        unit: 'mm',
+        format: 'a4'
+      });
+      doc.addFileToVFS("Amiri-Regular.ttf", fontData);
+      doc.addFont("Amiri-Regular.ttf", "Amiri", "normal");
+      doc.setFont("Amiri");
+      doc.setFontSize(9);
+      doc.text("أوفال لتغليف البيض", 105, 6, { align: "center" });
+      doc.setFontSize(7);
+      doc.text(`تاريخ اليوم: ${new Date().toLocaleDateString("ar-EG")}`, 105, 11, { align: "center" });
+
+      let y = 15;
+      let ordersOnPage = 0;
+      orders.forEach((order, index) => {
+        if (ordersOnPage >= 4) {
+          doc.addPage();
+          y = 6;
+          ordersOnPage = 0;
+        }
+        doc.setFontSize(8);
+        doc.text(`أوردر ${index + 1} - اسم الفرع: ${order["اسم الفرع"] || "غير محدد"}`, 200, y, { align: "right" });
+        y += 4;
+        doc.autoTable({
+          startY: y,
+          head: [["الصنف", "أبيض", "أحمر", "بلدي"]],
+          body: items
+            .filter(item => order[`${item}-أبيض`] || order[`${item}-أحمر`] || order[`${item}-بلدي`])
+            .map(item => [
+              item,
+              order[`${item}-أبيض`] || 0,
+              order[`${item}-أحمر`] || 0,
+              order[`${item}-بلدي`] || 0
+            ]),
+          styles: { font: "Amiri", fontSize: 6, halign: "right", cellPadding: 0.3, lineWidth: 0.1 },
+          headStyles: { fillColor: [108, 92, 231], fontSize: 6, halign: "right" },
+          margin: { right: 5, left: 5 },
+          columnStyles: { 0: { cellWidth: 40 }, 1: { cellWidth: 15 }, 2: { cellWidth: 15 }, 3: { cellWidth: 15 } },
+        });
+        y = doc.lastAutoTable.finalY + 2;
+        ordersOnPage++;
+      });
+
+      doc.setFontSize(8);
+      doc.text("الإجمالي", 200, y, { align: "right" });
+      y += 4;
+      const summary = {};
+      items.forEach(item => {
+        summary[item] = { "أبيض": 0, "أحمر": 0, "بلدي": 0 };
+      });
+      orders.forEach(order => {
+        items.forEach(item => {
+          ["أبيض", "أحمر", "بلدي"].forEach(type => {
+            summary[item][type] += order[`${item}-${type}`] || 0;
+          });
+        });
+      });
+      doc.autoTable({
+        startY: y,
+        head: [["الصنف", "أبيض", "أحمر", "بلدي"]],
+        body: items
+          .filter(item => summary[item]["أبيض"] || summary[item]["أحمر"] || summary[item]["بلدي"])
+          .map(item => [
+            item,
+            summary[item]["أبيض"],
+            summary[item]["أحمر"],
+            summary[item]["بلدي"]
+          ]),
+        styles: { font: "Amiri", fontSize: 6, halign: "right", cellPadding: 0.3, lineWidth: 0.1 },
+        headStyles: { fillColor: [108, 92, 231], fontSize: 6, halign: "right" },
+        margin: { right: 5, left: 5 },
+        columnStyles: { 0: { cellWidth: 40 }, 1: { cellWidth: 15 }, 2: { cellWidth: 15 }, 3: { cellWidth: 15 } },
+      });
+
+      return doc;
+    }
+
+    function exportToPDF() {
+      if (orders.length === 0) {
+        alert("لا توجد أوردرات لتصديرها!");
+        return;
+      }
+      const doc = generatePDF();
+      if (doc) {
+        doc.save(`orders_${new Date().toLocaleDateString("ar-EG")}.pdf`);
+      }
+    }
+
+    function sharePDF() {
+      if (orders.length === 0) {
+        alert("لا توجد أوردرات لمشاركتها!");
+        return;
+      }
+      if (!navigator.share) {
+        alert("خاصية المشاركة غير مدعومة في هذا المتصفح. الرجاء تحميل ملف الـ PDF يدويًا.");
+        return;
+      }
+      const doc = generatePDF();
+      if (!doc) return;
+      const pdfBlob = doc.output("blob");
+      const file = new File([pdfBlob], `orders_${new Date().toLocaleDateString("ar-EG")}.pdf`, { type: "application/pdf" });
+      navigator.share({
+        files: [file],
+        title: "أوردرات أوفال لتغليف البيض",
+        text: "تفاصيل الأوردرات والإجمالي ليوم " + new Date().toLocaleDateString("ar-EG"),
+      }).then(() => {
+        console.log("تمت المشاركة بنجاح!");
+      }).catch(error => {
+        console.error("خطأ أثناء المشاركة:", error);
+        alert("حدث خطأ أثناء المشاركة. جرب تحميل الـ PDF يدويًا.");
+      });
+    }
+
+    function updateSummary() {
+      const summary = {};
+      items.forEach(item => {
+        summary[item] = { "أبيض": 0, "أحمر": 0, "بلدي": 0 };
+      });
+      orders.forEach(order => {
+        items.forEach(item => {
+          ["أبيض", "أحمر", "بلدي"].forEach(type => {
+            summary[item][type] += order[`${item}-${type}`] || 0;
+          });
+        });
+      });
+      const tbody = document.getElementById("summaryBody");
+      tbody.innerHTML = items.map(item => `
+        <tr>
+          <td>${item}</td>
+          <td>${summary[item]["أبيض"]}</td>
+          <td>${summary[item]["أحمر"]}</td>
+          <td>${summary[item]["بلدي"]}</td>
+        </tr>
+      `).join('');
+    }
+
+    function editOrder(index) {
+      alert("يمكنك تعديل أوردر " + (index + 1) + " مباشرة من الجدول ✅");
+    }
+
+    function printOrders() {
+      window.print();
+    }
+
+    // Keyboard Navigation for Input Fields
+    document.addEventListener('keydown', function(event) {
+      const activeElement = document.activeElement;
+      if (!activeElement.matches('input[data-order][data-item]')) return;
+
+      const orderIndex = activeElement.dataset.order;
+      const item = activeElement.dataset.item;
+      const table = activeElement.closest('table');
+      const inputs = Array.from(table.querySelectorAll('input[data-order="' + orderIndex + '"]'));
+      const currentIndex = inputs.indexOf(activeElement);
+
+      let nextIndex;
+      switch (event.key) {
+        case 'ArrowUp':
+          // Move to previous row, same column
+          if (currentIndex >= 4) { // Skip branch name row (index 0)
+            nextIndex = currentIndex - 3; // Move up one row (3 columns per row)
+            if (nextIndex > 0) inputs[nextIndex].focus();
+          }
+          break;
+        case 'ArrowDown':
+        case 'Enter': // Treat Enter as moving down
+          // Move to next row, same column
+          if (currentIndex < inputs.length - 3) {
+            nextIndex = currentIndex + 3;
+            inputs[nextIndex].focus();
+          }
+          break;
+        case 'ArrowLeft':
+          // Move to previous column, same row
+          if (currentIndex % 3 !== 1 && currentIndex > 0) { // Avoid moving left from first column
+            nextIndex = currentIndex - 1;
+            inputs[nextIndex].focus();
+          }
+          break;
+        case 'ArrowRight':
+          // Move to next column, same row
+          if (currentIndex % 3 !== 0 && currentIndex < inputs.length - 1) { // Avoid moving right from last column
+            nextIndex = currentIndex + 1;
+            inputs[nextIndex].focus();
+          }
+          break;
+      }
+      if (nextIndex !== undefined) {
+        event.preventDefault(); // Prevent default scrolling behavior
+      }
+    });
+
+    window.onload = function() {
+      const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+      savedOrders.forEach(order => {
+        addOrder();
+        const orderIndex = orders.length - 1;
+        orders[orderIndex] = order;
+        const inputs = document.querySelectorAll(`input[data-order="${orderIndex}"]`);
+        inputs.forEach(input => {
+          input.value = order[input.dataset.item] || "";
+        });
+      });
+      updateSummary();
+    };
+  </script>
+
+</body></html>
