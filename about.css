@@ -1,115 +1,202 @@
-
-
+/* 🌿 تصميم صفحة About احترافي – ألوان الشركة */
 body {
-    font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #e0f2f1, #f1f8e9);
-
-    margin: 0;
-    padding: 0;
-    direction: rtl;
+  font-family: "Cairo", sans-serif;
+  background: #f9fbf9;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  color: #2e2e2e;
+  overflow-x: hidden;
 }
 
-header  {
-    background-color: #2e7d32;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    margin: 0;
-
+/* 🔰 الهيدر */
+header {
+  background: linear-gradient(90deg, #2e7d32, #43a047);
+  color: white;
+  padding: 25px 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.3);
+  animation: fadeDown 1s ease;
 }
 
+/* 🏠 زر العودة للرئيسية */
 .home-link {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin: 25px 0 40px;
+  animation: fadeUp 1s ease;
+}
+.home-link a {
+  background: linear-gradient(90deg, #ff8202, #ff9800);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 5px 12px rgba(255, 130, 2, 0.25);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.home-link a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: left 0.4s ease;
+}
+.home-link a:hover::before {
+  left: 0;
+}
+.home-link a:hover {
+  transform: translateY(-3px);
 }
 
-.home-link a {
-    padding: 10px 20px;
-    background-color: #2e7d32;
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
+/* 🟩 قسم التعريف */
+.about {
+  background: #ffffff;
+  color: #2e7d32;
+  border-radius: 16px;
+  padding: 35px 25px;
+  margin: 0 auto 50px;
+  max-width: 1000px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 1s ease;
+  transition: transform 0.3s ease;
+}
+.about:hover {
+  transform: translateY(-5px);
 }
 .about h2 {
-    color: #ff8202;
+  color: #ff8202;
+  margin-bottom: 15px;
+  font-size: 26px;
 }
-.about {
-    padding: 20px;
-    background-color: #2e7d32;
-    color: white;
-    border-radius: 12px;
-    margin: 20px;
-    text-align: center;
+.about p {
+  color: #444;
+  line-height: 1.8;
+  font-size: 17px;
 }
 
+/* 🍳 قسم المنتجات */
 .about-products {
-    max-width: 1100px;
-    margin: 50px auto;
+  max-width: 1100px;
+  margin: 50px auto;
+  text-align: center;
 }
-
 .about-products h2 {
-    text-align: center;
-    color: #ff8202;
-    margin-bottom: 40px;
+  color: #ff8202;
+  margin-bottom: 40px;
+  font-size: 24px;
+  animation: fadeDown 1s ease;
 }
 
+/* 🧺 الشبكة */
 .products-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  animation: fadeUp 1.3s ease;
 }
 
+/* 🧩 كارت المنتج */
 .product {
-    width: 300px;
-      border: 1px solid #ff8202;
-
-    background: #2e7d32;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  background: #ffffff;
+  border-radius: 14px;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.product:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+.product::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 130, 2, 0.1);
+  transition: top 0.4s ease;
+}
+.product:hover::before {
+  top: 0;
 }
 
 .product img {
-    width: 50%;
-    border-radius: 10px;
+  width: 60%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
 }
-
+.product:hover img {
+  transform: scale(1.05);
+}
 .product h3 {
-    color: #ff8202;
+  color: #2e7d32;
+  margin-bottom: 10px;
 }
 .product p {
-    color: #fff
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
+/* 🦶 الفوتر */
 footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #2e7d32;
-    margin-top: 30px;
-    color: #fff;
+  background: linear-gradient(90deg, #2e7d32, #43a047);
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 60px;
+  font-size: 15px;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 -4px 12px rgba(46, 125, 50, 0.25);
+  animation: fadeUp 1.2s ease;
 }
 
-.product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+/* 🎬 الأنيميشن */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-
-.home-link {
-    text-align: center;
+/* 📱 التوافق مع الموبايل */
+@media (max-width: 600px) {
+  header {
+    font-size: 18px;
+    padding: 20px 10px;
+  }
+  .product {
+    width: 90%;
+  }
+  .about {
     margin: 20px;
-}
-.home-link a {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-.home-link a:hover {
-    background-color: #388e3c;
+    padding: 25px 15px;
+  }
+  .about h2 {
+    font-size: 22px;
+  }
 }
