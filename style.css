@@ -375,9 +375,9 @@ footer {
   position: absolute;
   width: 40px;
   height: 55px;
-  background: radial-gradient(circle at 30% 30%, #ff4b2b 60%, #c62828 100%);
+  background: radial-gradient(circle at 30% 30%, #ff4b2b 60%, #ff4b2b 100%);
   border-radius: 50% 50% 45% 55% / 60% 60% 40% 40%;
-  box-shadow: 0 4px 8px rgba(198, 40, 40, 0.3);
+  box-shadow: 0 4px 8px rgba(240, 100, 6, 0.932);
   opacity: 0.9;
   animation: fall 10s linear infinite;
 }
